@@ -32,11 +32,8 @@ describe Dessert do
   end
 
   describe "#add_ingredient" do
-    before(:each) do
-      dessert.add_ingredient('milk')
-    end
-
     it "adds an ingredient to the ingredients array" do
+      dessert.add_ingredient('milk')
       expect(dessert.ingredients).to eq(['milk'])
     end
   end
@@ -44,36 +41,35 @@ describe Dessert do
   describe "#mix!" do
     let(:ingredients) {['milk','egg','sugar','cornstarch','salt']}
 
-    before(:each) do
+    it "shuffles the ingredient array" do
       ingredients.each do |ingredient|
         dessert.add_ingredient(ingredient)
       end
-      dessert.mix!
-    end
 
-    it "shuffles the ingredient array" do
+      expect(dessert.ingredients).to eq(ingredients)
+      dessert.mix!
       expect(dessert.ingredients).to_not eq(ingredients)
+      expect(dessert.ingredients.sort).to eq(ingredients.sort)
     end
   end
 
   describe "#eat" do
-    before(:each) do
-      dessert.eat(5)
-    end
 
     it "subtracts an amount from the quantity" do
-      expect(dessert.quantity).to eq(5)
+      dessert.eat(6)
+      expect(dessert.quantity).to eq(4)
     end
 
     it "raises an error if the amount is greater than the quantity" do
-      expect {dessert.eat(6)}.to raise_error('not enough left!')
+      expect {dessert.eat(11)}.to raise_error('not enough left!')
     end
   end
 
   describe "#serve" do
     it "contains the titleized version of the chef's name" do
       expect(chef).to receive(:titleize)
-      dessert.serve
+      allow(chef).to receive(:titleize).and_return('a great chef')
+      expect(dessert.serve).to eq('a great chef has made 10 puddings!')
     end
   end
 
