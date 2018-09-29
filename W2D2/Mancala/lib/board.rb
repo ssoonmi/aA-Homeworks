@@ -18,7 +18,8 @@ class Board
       if [6,13].include?(idx)
         cup
       else
-        cup = [:stone,:stone,:stone,:stone]
+        4.times {cup += [:stone]}
+        cup
       end
     end
   end
@@ -75,8 +76,7 @@ class Board
   end
 
   def winner
-    return self.name1 if cups[6].length > cups[13].length
-    return self.name2 if cups[6].length < cups[13].length
-    :draw
+    return :draw if self.cups[6].length == self.cups[13].length
+    self.cups[6].length > self.cups[13].length ? self.name1 : self.name2
   end
 end
