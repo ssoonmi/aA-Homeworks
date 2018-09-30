@@ -88,20 +88,24 @@ class CleverOctopus < Octopus
 end
 
 class DancingOctopus < Octopus
-  TILES = %w(up, right-up, right, right-down, down, left-down, left, left-up)
+  TILES = %w(up right-up right right-down down left-down left left-up)
 
-  def initialize(fishes=[])
-    super
+  attr_reader :tiles_array, :tiles_hash
+
+  def initialize(fishes=[],tiles_array=TILES)
+    super(fishes)
+    @tiles_array = tiles_array
+    @tiles_hash = make_tiles_hash(tiles_array)
   end
 
-  def slow_dance(direction, tiles_array=TILES)
+  def slow_dance(direction, tiles_array=self.tiles_array)
     tiles_array.each_with_index do |tile, idx|
       return idx if tile == direction
     end
     nil
   end
 
-  def new_tiles_data_structure(tiles_array)
+  def make_tiles_hash(tiles_array)
     tiles_hash = {}
     tiles_array.each_with_index do |tile, idx|
       tiles_hash[tile] = idx
@@ -109,7 +113,7 @@ class DancingOctopus < Octopus
     tiles_hash
   end
 
-  def fast_dance(direction, new_tiles_data_structure)
-    new_tiles_data_structure[direction]
+  def fast_dance(direction, tiles_hash=self.tiles_hash)
+    tiles_hash[direction]
   end
 end
