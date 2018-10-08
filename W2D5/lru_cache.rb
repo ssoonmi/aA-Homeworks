@@ -2,6 +2,7 @@ class LRUCache
   def initialize(length)
     @length = length
     @cache = []
+    @cache_idx = []
   end
 
   def count
@@ -29,7 +30,7 @@ class LRUCache
 
   private
   # helper methods go here!
-  attr_accessor :cache, :length
+  attr_accessor :cache, :length, :cache_idx
 end
 
 johnny_cache = LRUCache.new(4)
