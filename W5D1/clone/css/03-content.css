@@ -1,0 +1,33 @@
+/* PHASE 3: Content */
+
+.content {
+  background-color: var(--white);
+  width: var(--total-size);
+  margin: 0 auto;
+  border: 1px var(--gray) solid;
+  border-top: 0;
+}
+
+.content-sidebar {
+  width: var(--sidebar-size);
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.content-main {
+  width: var(--content-size);
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: var(--larger);
+  font-weight: var(--bold);
+  margin-bottom: 20px;
+}
+
+.content p {
+
+}

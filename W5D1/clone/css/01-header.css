@@ -1,0 +1,54 @@
+
+/* PHASE 1: Header */
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --dark-gray: #aaa;
+  --gray: #ccc;
+  --light-gray: #eee;
+  --red: #f00;
+
+  --bold: 700;
+  --larger: 24px;
+  --smaller: 14px;
+
+  --border-thickness: 1px;
+
+  --total-size: 900px;
+  --sidebar-size: 240px;
+  --content-size: 660px;
+}
+
+body {
+  /* Write your css here... */
+  font-family: sans-serif;
+  font-weight: 400px;
+  font-size: 16px;
+  background-color: var(--light-gray);
+}
+
+.header {
+  background-color: var(--red);
+  color: var(--white);
+  border-bottom: 1px var(--gray) solid;
+}
+
+.header a {
+  display: block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.header-logo {
+  border-right: 1px var(--gray) solid;
+  font-weight: var(--bold);
+}
+
+.header-nav {
+  display: block;
+  margin: 0 auto;
+  width: var(--total-size);
+  border-right: 1px var(--gray) solid;
+  border-left: 1px var(--gray) solid;
+}
